@@ -3,165 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bikecenter Conversion Demo</title>
+
+<title>Bikecenter Rennräder Garmisch – Probefahrt</title>
 
 <style>
 
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
-background:#f4f4f4;
-color:#222;
+background:#111;
+color:white;
 }
 
 header{
-background:white;
-border-bottom:1px solid #ddd;
+background:#000;
 padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-font-size:22px;
+text-align:center;
+font-size:26px;
 font-weight:bold;
 }
 
 .hero{
-height:500px;
-background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
-url("https://images.unsplash.com/photo-1517649763962-0c623066013b");
+height:520px;
+background-image:url("https://www.bikecenter.de/getimage.php?artikelid=000000-6684eac6617ee&size=xl&image=1");
 background-size:cover;
 background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-color:white;
 }
 
 .hero h1{
-font-size:42px;
-margin-bottom:20px;
+background:rgba(0,0,0,0.6);
+padding:25px;
+border-radius:8px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.bikes{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.bike{
+background:#1a1a1a;
+padding:15px;
+border-radius:8px;
+text-align:center;
+}
+
+.bike img{
+width:100%;
+border-radius:6px;
+}
+
+.price{
+font-size:22px;
+margin:10px 0;
+font-weight:bold;
+}
+
+.button{
+display:inline-block;
+background:#e60023;
+color:white;
+padding:12px 22px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+margin-top:10px;
 }
 
 .cta{
-background:#ff3b00;
-padding:14px 22px;
-color:white;
-text-decoration:none;
-font-weight:bold;
-border-radius:4px;
-}
-
-.section{
+background:#000;
+text-align:center;
 padding:60px 20px;
-max-width:1100px;
+}
+
+form{
+max-width:500px;
 margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:white;
+input,select{
+padding:12px;
+font-size:16px;
 border-radius:6px;
-overflow:hidden;
-border:1px solid #ddd;
-}
-
-.card img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
-
-.card-content{
-padding:15px;
+border:none;
 }
 
 footer{
-background:#222;
-color:white;
+background:#000;
+padding:25px;
 text-align:center;
-padding:30px;
-margin-top:60px;
+margin-top:40px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-Bikecenter Demo
-</div>
-
-<div>
-Rennräder • Service • Beratung
-</div>
-
+Bikecenter Rennräder Garmisch
 </header>
 
 <section class="hero">
-
-<div>
-
-<h1>Premium Rennräder in Garmisch</h1>
-
-<a class="cta" href="#">
-Probefahrt buchen
-</a>
-
-</div>
-
+<h1>
+High-End Rennräder<br>
+Probefahrt im Bikecenter möglich
+</h1>
 </section>
 
-<section class="section">
+<div class="container">
 
 <h2>Top Rennräder</h2>
 
-<div class="grid">
+<div class="bikes">
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e">
-<div class="card-content">
-<h3>Carbon Rennrad</h3>
-<p>ab 2.499 €</p>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1518655048521-f130df041f66">
-<div class="card-content">
-<h3>Performance Roadbike</h3>
-<p>ab 3.299 €</p>
-</div>
+<div class="bike">
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6684eac6617ee&size=xl&image=1">
+<h3>Cervelo R5</h3>
+<div class="price">High-End Race Bike</div>
+<a class="button" href="#probefahrt">Probefahrt</a>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1520975922284-8b456906c813">
-<div class="card-content">
-<h3>Race Edition</h3>
-<p>ab 4.199 €</p>
+<div class="bike">
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6684eac6617ee&size=xl&image=1">
+<h3>Race Bike</h3>
+<div class="price">Performance Road Bike</div>
+<a class="button" href="#probefahrt">Probefahrt</a>
 </div>
+
+<div class="bike">
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6684eac6617ee&size=xl&image=1">
+<h3>Premium Rennrad</h3>
+<div class="price">Carbon Performance</div>
+<a class="button" href="#probefahrt">Probefahrt</a>
 </div>
 
 </div>
+</div>
+
+<section class="cta" id="probefahrt">
+
+<h2>Probefahrt anfragen</h2>
+
+<form action="https://formspree.io/f/mqeykooa" method="POST">
+
+<input type="text" name="name" placeholder="Name" required>
+
+<input type="email" name="email" placeholder="E-Mail" required>
+
+<select name="bike">
+<option>Cervelo R5</option>
+<option>Pinarello</option>
+<option>Specialized</option>
+</select>
+
+<input type="submit" value="Probefahrt anfragen">
+
+</form>
 
 </section>
 
 <footer>
-
-Bikecenter Conversion Konzept Demo
-
+Bikecenter Garmisch – Rennräder & Beratung
 </footer>
 
 </body>
