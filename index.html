@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bikecenter Rennräder Garmisch – Probefahrt</title>
+<title>Bikecenter Rennräder – Demo</title>
 
 <style>
 
@@ -19,19 +19,18 @@ header{
 background:#000;
 padding:20px;
 text-align:center;
-font-size:26px;
+font-size:28px;
 font-weight:bold;
 }
 
 .hero{
-height:520px;
-background-image:url("https://www.bikecenter.de/getimage.php?artikelid=000000-6684eac6617ee&size=xl&image=1");
-background-size:cover;
-background-position:center;
+height:420px;
+background:#222;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+padding:20px;
 }
 
 .hero h1{
@@ -41,12 +40,12 @@ border-radius:8px;
 }
 
 .container{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
 padding:40px 20px;
 }
 
-.bikes{
+#bike-gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
@@ -65,7 +64,7 @@ border-radius:6px;
 }
 
 .price{
-font-size:22px;
+font-size:20px;
 margin:10px 0;
 font-weight:bold;
 }
@@ -74,7 +73,7 @@ font-weight:bold;
 display:inline-block;
 background:#e60023;
 color:white;
-padding:12px 22px;
+padding:12px 20px;
 border-radius:6px;
 text-decoration:none;
 font-weight:bold;
@@ -95,7 +94,7 @@ flex-direction:column;
 gap:15px;
 }
 
-input,select{
+input{
 padding:12px;
 font-size:16px;
 border-radius:6px;
@@ -127,32 +126,10 @@ Probefahrt im Bikecenter möglich
 
 <div class="container">
 
-<h2>Top Rennräder</h2>
+<h2>Rennräder</h2>
 
-<div class="bikes">
+<div id="bike-gallery"></div>
 
-<div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6684eac6617ee&size=xl&image=1">
-<h3>Cervelo R5</h3>
-<div class="price">High-End Race Bike</div>
-<a class="button" href="#probefahrt">Probefahrt</a>
-</div>
-
-<div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6684eac6617ee&size=xl&image=1">
-<h3>Race Bike</h3>
-<div class="price">Performance Road Bike</div>
-<a class="button" href="#probefahrt">Probefahrt</a>
-</div>
-
-<div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6684eac6617ee&size=xl&image=1">
-<h3>Premium Rennrad</h3>
-<div class="price">Carbon Performance</div>
-<a class="button" href="#probefahrt">Probefahrt</a>
-</div>
-
-</div>
 </div>
 
 <section class="cta" id="probefahrt">
@@ -165,12 +142,6 @@ Probefahrt im Bikecenter möglich
 
 <input type="email" name="email" placeholder="E-Mail" required>
 
-<select name="bike">
-<option>Cervelo R5</option>
-<option>Pinarello</option>
-<option>Specialized</option>
-</select>
-
 <input type="submit" value="Probefahrt anfragen">
 
 </form>
@@ -178,8 +149,46 @@ Probefahrt im Bikecenter möglich
 </section>
 
 <footer>
-Bikecenter Garmisch – Rennräder & Beratung
+Bikecenter Demo – Rennrad Beratung & Probefahrt
 </footer>
+
+<script>
+
+fetch("bikes/bikes.csv")
+.then(response => response.text())
+.then(data => {
+
+let rows = data.split("\n");
+
+let gallery = document.getElementById("bike-gallery");
+
+rows.slice(1).forEach(row => {
+
+let cols = row.split(",");
+
+let name = cols[0];
+let price = cols[1];
+let image = cols[2];
+let link = cols[3];
+
+let bike = document.createElement("div");
+bike.className = "bike";
+
+bike.innerHTML = `
+<img src="${image}">
+<h3>${name}</h3>
+<div class="price">${price}</div>
+<a href="${link}" target="_blank" class="button">Details</a>
+<a href="#probefahrt" class="button">Probefahrt</a>
+`;
+
+gallery.appendChild(bike);
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
