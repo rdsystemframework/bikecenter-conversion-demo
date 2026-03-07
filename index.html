@@ -1,120 +1,195 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bikecenter Rennräder – Demo</title>
+
+<title>Bikecenter Rennräder</title>
 
 <style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#111;color:#fff}
-header{background:#000;padding:20px;text-align:center;font-size:28px;font-weight:bold}
-.hero{height:420px;background:#222;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
-.hero h1{background:rgba(0,0,0,.6);padding:25px;border-radius:8px}
-.container{max-width:1200px;margin:auto;padding:40px 20px}
-#bike-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
-.bike{background:#1a1a1a;padding:15px;border-radius:8px;text-align:center}
-.bike img{width:100%;border-radius:6px}
-.price{font-size:20px;margin:10px 0;font-weight:bold}
-.button{display:inline-block;background:#e60023;color:#fff;padding:12px 20px;border-radius:6px;text-decoration:none;font-weight:bold;margin:6px}
-.cta{background:#000;text-align:center;padding:60px 20px}
-form{max-width:500px;margin:auto;display:flex;flex-direction:column;gap:15px}
-input{padding:12px;font-size:16px;border-radius:6px;border:none}
-footer{background:#000;padding:25px;text-align:center;margin-top:40px}
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#111;
+color:white;
+}
+
+header{
+background:#000;
+padding:20px;
+text-align:center;
+font-size:28px;
+font-weight:bold;
+}
+
+.hero{
+height:420px;
+background:#222;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+background:rgba(0,0,0,0.6);
+padding:25px;
+border-radius:8px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+#bike-gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.bike{
+background:#1a1a1a;
+padding:15px;
+border-radius:8px;
+text-align:center;
+}
+
+.bike img{
+width:100%;
+border-radius:6px;
+}
+
+.price{
+font-size:20px;
+margin:10px 0;
+font-weight:bold;
+}
+
+.button{
+display:inline-block;
+background:#e60023;
+color:white;
+padding:12px 20px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+margin:5px;
+}
+
+.cta{
+background:#000;
+text-align:center;
+padding:60px 20px;
+}
+
+form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input{
+padding:12px;
+font-size:16px;
+border-radius:6px;
+border:none;
+}
+
+footer{
+background:#000;
+padding:25px;
+text-align:center;
+margin-top:40px;
+}
+
 </style>
+
 </head>
 
 <body>
 
-<header>Bikecenter Rennräder Garmisch</header>
+<header>
+Bikecenter Rennräder Garmisch
+</header>
 
 <section class="hero">
-<h1>High-End Rennräder<br>Probefahrt im Bikecenter möglich</h1>
+<h1>
+High-End Rennräder<br>
+Probefahrt im Bikecenter möglich
+</h1>
 </section>
 
 <div class="container">
+
 <h2>Rennräder</h2>
+
 <div id="bike-gallery"></div>
+
 </div>
 
 <section class="cta" id="probefahrt">
+
 <h2>Probefahrt anfragen</h2>
+
 <form action="https://formspree.io/f/mqeykooa" method="POST">
+
 <input type="text" name="name" placeholder="Name" required>
+
 <input type="email" name="email" placeholder="E-Mail" required>
+
 <input type="submit" value="Probefahrt anfragen">
+
 </form>
+
 </section>
 
-<footer>Bikecenter Demo – Rennrad Beratung & Probefahrt</footer>
+<footer>
+Bikecenter Demo – Rennrad Beratung & Probefahrt
+</footer>
 
 <script>
-// --- CSV robust parsen (Komma ODER Semikolon) ---
-function detectDelimiter(headerLine){
-  const sc = (headerLine.match(/;/g)||[]).length;
-  const cc = (headerLine.match(/,/g)||[]).length;
-  return sc > cc ? ';' : ',';
-}
 
-function splitCSVLine(line, delim){
-  const out=[]; let cur=''; let inQ=false;
-  for(let i=0;i<line.length;i++){
-    const ch=line[i];
-    if(ch === '"'){ inQ=!inQ; continue; }
-    if(ch === delim && !inQ){ out.push(cur.trim()); cur=''; continue; }
-    cur+=ch;
-  }
-  out.push(cur.trim());
-  return out;
-}
+fetch("bikes/bikecenter.csv")
+.then(response => response.text())
+.then(data => {
 
-function pick(obj, keys){
-  for(const k of keys){
-    if(obj[k] && obj[k].trim()) return obj[k].trim();
-  }
-  return '';
-}
+let rows = data.split("\n");
 
-fetch("bikes/bikes.csv")
-.then(r => r.text())
-.then(txt => {
-  const lines = txt.split(/\r?\n/).filter(l => l.trim().length);
-  if(lines.length < 2) return;
+let gallery = document.getElementById("bike-gallery");
 
-  const delim = detectDelimiter(lines[0]);
-  const headers = splitCSVLine(lines[0], delim).map(h => h.toLowerCase());
+rows.slice(1).forEach(row => {
 
-  const gallery = document.getElementById("bike-gallery");
+let cols = row.split(",");
 
-  for(let i=1;i<lines.length;i++){
-    const cols = splitCSVLine(lines[i], delim);
-    const row = {};
-    headers.forEach((h,idx)=> row[h] = cols[idx] || '');
+let name = cols[0];
+let price = cols[1];
+let image = cols[2];
+let link = cols[3];
 
-    // flexible Feldsuche
-    const name  = pick(row, ['name','titel','title','artikelbeschreibung','beschreibung','product']);
-    const price = pick(row, ['price','preis','preisanzeige','amount']);
-    const image = pick(row, ['image','bild','img','artikelangebot src','src']);
-    const link  = pick(row, ['link','url','href','artikellink href','product_link']);
+let bike = document.createElement("div");
+bike.className = "bike";
 
-    if(!image && !name) continue; // leere Zeilen überspringen
+bike.innerHTML = `
+<img src="${image}">
+<h3>${name}</h3>
+<div class="price">${price}</div>
+<a href="${link}" target="_blank" class="button">Details</a>
+<a href="#probefahrt" class="button">Probefahrt</a>
+`;
 
-    const card = document.createElement('div');
-    card.className = 'bike';
+gallery.appendChild(bike);
 
-    card.innerHTML = `
-      ${image ? `<img src="${image}" alt="${name||'Bike'}">` : ''}
-      <h3>${name || 'Bike'}</h3>
-      <div class="price">${price || ''}</div>
-      ${link ? `<a class="button" href="${link}" target="_blank">Details</a>` : ''}
-      <a class="button" href="#probefahrt">Probefahrt</a>
-    `;
-
-    gallery.appendChild(card);
-  }
-})
-.catch(err => {
-  console.error('CSV Fehler:', err);
 });
+
+});
+
 </script>
 
 </body>
