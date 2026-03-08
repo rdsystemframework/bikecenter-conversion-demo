@@ -10,17 +10,17 @@ rows.forEach(row => {
 
 const cols = row.split(",")
 
-const productLink = cols[0].replace(/"/g,"")
-const imageLink = cols[1].replace(/"/g,"")
+const link = cols[0]?.trim()
+const image = cols[1]?.trim()
 
-if(!imageLink) return
+if(!image || image === "") return
 
 const bike = document.createElement("div")
 bike.className = "bike"
 
 bike.innerHTML = `
-<img src="${imageLink}">
-<a class="details" href="${productLink}" target="_blank">
+<img src="${image}">
+<a class="details" href="${link}" target="_blank">
 Produkt ansehen
 </a>
 `
