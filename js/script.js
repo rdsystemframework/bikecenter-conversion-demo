@@ -8,7 +8,7 @@ let gallery = document.getElementById("bike-gallery");
 
 rows.slice(1).forEach(row => {
 
-let cols = row.split(";");
+let cols = row.split(",");
 
 let link = cols[0];
 let image = cols[1];
@@ -20,6 +20,7 @@ bike.className = "bike";
 
 bike.innerHTML = `
 <img src="${image}">
+<br><br>
 <a href="${link}" target="_blank">Details</a>
 `;
 
