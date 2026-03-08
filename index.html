@@ -2,7 +2,6 @@
 <html lang="de">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -72,7 +71,7 @@ padding:12px 20px;
 border-radius:6px;
 text-decoration:none;
 font-weight:bold;
-margin-top:10px;
+margin:5px;
 }
 
 .cta{
@@ -164,7 +163,7 @@ let gallery = document.getElementById("bike-gallery");
 
 rows.slice(1).forEach(row => {
 
-let cols = row.split(",");
+let cols = row.split(";")
 
 let link = cols[0];
 let image = cols[1];
@@ -177,6 +176,7 @@ bike.className = "bike";
 
 bike.innerHTML = `
 <img src="${image}">
+<br>
 <a href="${link}" target="_blank" class="button">Details</a>
 <a href="#probefahrt" class="button">Probefahrt</a>
 `;
