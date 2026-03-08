@@ -8,107 +8,7 @@
 
 <title>Bikecenter Rennräder</title>
 
-<style>
-
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#111;
-color:white;
-}
-
-header{
-background:#000;
-padding:25px;
-text-align:center;
-font-size:28px;
-font-weight:bold;
-}
-
-.hero{
-height:350px;
-background:#222;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-}
-
-.hero-box{
-background:rgba(0,0,0,0.7);
-padding:30px;
-border-radius:10px;
-font-size:24px;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:40px 20px;
-}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.bike{
-background:#1a1a1a;
-padding:15px;
-border-radius:8px;
-text-align:center;
-}
-
-.bike img{
-width:100%;
-border-radius:6px;
-}
-
-.button{
-display:inline-block;
-margin-top:10px;
-padding:10px 15px;
-background:#e60023;
-color:white;
-text-decoration:none;
-border-radius:6px;
-font-weight:bold;
-}
-
-form{
-max-width:500px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-input, textarea{
-padding:12px;
-font-size:16px;
-border-radius:6px;
-border:none;
-}
-
-button{
-background:#e60023;
-color:white;
-border:none;
-padding:12px;
-font-size:16px;
-border-radius:6px;
-cursor:pointer;
-}
-
-footer{
-background:#000;
-padding:25px;
-text-align:center;
-margin-top:40px;
-}
-
-</style>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -127,38 +27,32 @@ Probefahrt im Bikecenter möglich
 
 </section>
 
-<div class="container">
+<section class="container">
 
 <h2>Rennräder</h2>
 
 <div class="gallery">
 
 <div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-627be21ced776&size=xl&image=1"
-onerror="this.src='https://via.placeholder.com/600x400?text=Bikecenter';">
-<br>
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-627be21ced776&size=xl&image=1">
 <a class="button" href="https://www.bikecenter.de/Cervelo_Aspero_5_-_Campagnolo_Ekar_-_Lime_Shimmer_-_Gr.61cm.html" target="_blank">Details</a>
 </div>
 
 <div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-67d54954cc8c6&size=xl&image=1"
-onerror="this.src='https://via.placeholder.com/600x400?text=Bikecenter';">
-<br>
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-67d54954cc8c6&size=xl&image=1">
 <a class="button" href="https://www.bikecenter.de/Cervelo_Aspero_5_mit_Campagnolo_Ekar_Farbe_Champagne_Rose_Gr._48cm.html" target="_blank">Details</a>
 </div>
 
 <div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6748eac6617ee&size=xl&image=1"
-onerror="this.src='https://via.placeholder.com/600x400?text=Bikecenter';">
-<br>
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6748eac6617ee&size=xl&image=1">
 <a class="button" href="https://www.bikecenter.de/Cervelo_Aspero_5_mit_Campagnolo_Ekar_Farbe_Champagne_Rose_Gr._51cm.html" target="_blank">Details</a>
 </div>
 
 </div>
 
-</div>
+</section>
 
-<div class="container">
+<section class="container">
 
 <h2>Probefahrt anfragen</h2>
 
@@ -174,11 +68,13 @@ onerror="this.src='https://via.placeholder.com/600x400?text=Bikecenter';">
 
 </form>
 
-</div>
+</section>
 
 <footer>
-Bikecenter Garmisch – Demo Conversion Seite
+Bikecenter Demo Seite
 </footer>
+
+<script src="js/script.js"></script>
 
 </body>
 </html>
