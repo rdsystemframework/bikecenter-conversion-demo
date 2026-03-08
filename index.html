@@ -76,6 +76,38 @@ border-radius:6px;
 font-weight:bold;
 }
 
+form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input, textarea{
+padding:12px;
+font-size:16px;
+border-radius:6px;
+border:none;
+}
+
+button{
+background:#e60023;
+color:white;
+border:none;
+padding:12px;
+font-size:16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+footer{
+background:#000;
+padding:25px;
+text-align:center;
+margin-top:40px;
+}
+
 </style>
 
 </head>
@@ -102,23 +134,51 @@ Probefahrt im Bikecenter möglich
 <div class="gallery">
 
 <div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-627be21ced776&size=xl&image=1">
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-627be21ced776&size=xl&image=1"
+onerror="this.src='https://via.placeholder.com/600x400?text=Bikecenter';">
+<br>
 <a class="button" href="https://www.bikecenter.de/Cervelo_Aspero_5_-_Campagnolo_Ekar_-_Lime_Shimmer_-_Gr.61cm.html" target="_blank">Details</a>
 </div>
 
 <div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-67d54954cc8c6&size=xl&image=1">
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-67d54954cc8c6&size=xl&image=1"
+onerror="this.src='https://via.placeholder.com/600x400?text=Bikecenter';">
+<br>
 <a class="button" href="https://www.bikecenter.de/Cervelo_Aspero_5_mit_Campagnolo_Ekar_Farbe_Champagne_Rose_Gr._48cm.html" target="_blank">Details</a>
 </div>
 
 <div class="bike">
-<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6748eac6617ee&size=xl&image=1">
+<img src="https://www.bikecenter.de/getimage.php?artikelid=000000-6748eac6617ee&size=xl&image=1"
+onerror="this.src='https://via.placeholder.com/600x400?text=Bikecenter';">
+<br>
 <a class="button" href="https://www.bikecenter.de/Cervelo_Aspero_5_mit_Campagnolo_Ekar_Farbe_Champagne_Rose_Gr._51cm.html" target="_blank">Details</a>
 </div>
 
 </div>
 
 </div>
+
+<div class="container">
+
+<h2>Probefahrt anfragen</h2>
+
+<form action="https://formspree.io/f/mqeykooa" method="POST">
+
+<input type="text" name="name" placeholder="Dein Name" required>
+
+<input type="email" name="email" placeholder="Deine Email" required>
+
+<textarea name="message" placeholder="Welches Fahrrad möchtest du testen?"></textarea>
+
+<button type="submit">Probefahrt anfragen</button>
+
+</form>
+
+</div>
+
+<footer>
+Bikecenter Garmisch – Demo Conversion Seite
+</footer>
 
 </body>
 </html>
